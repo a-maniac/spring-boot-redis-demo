@@ -42,6 +42,7 @@ This project demonstrates:
 ---
 
 ## 📂 Project Structure
+```text
 spring-boot-redis-demo
 │
 ├── src/main/java/com/api/redis
@@ -58,7 +59,7 @@ spring-boot-redis-demo
 ├── pom.xml
 └── README.md
 
-
+```
 ---
 
 ## ⚙️ Redis Configuration
@@ -194,7 +195,7 @@ HGETALL users
 ```
 ---
 
-##🧪 Sample Workflow
+## 🧪 Sample Workflow
 
 1. Send request to create user
 2. User is saved in Redis using Hash
@@ -203,7 +204,7 @@ HGETALL users
 
    ---
 
-##🏗 Why Use Hash Instead of Value?
+## 🏗 Why Use Hash Instead of Value?
 | Feature                | opsForValue | opsForHash |
 | ---------------------- | ----------- | ---------- |
 | Single Object          | ✅           | ❌          |
