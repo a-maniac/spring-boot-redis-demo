@@ -7,6 +7,7 @@ import com.api.redis.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -21,26 +22,26 @@ public class UserController {
 
     @PostMapping("/post")
     public UserDto createUser(@RequestBody UserDto user){
-        return userRepository.save(user);
+        return userService.createUser(user);
 
     }
 
     @GetMapping("/{userId}")
-    public UserEntity getUserById(@PathVariable Long userId){
-        UserEntity currUser= userService.getUserById(userId);
+    public UserDto getUserById(@PathVariable Long userId){
+        UserDto currUser= userService.getUserById(userId);
         return currUser;
 
     }
 
     @GetMapping("/getAllUsers")
-    public Map<Object,Object> getAllUser(){
-        return userRepository.findAllUsers();
+    public List<UserDto> getAllUser(){
+        return userService.findAllUser();
 
     }
 
     @DeleteMapping("/{userId}")
-    public void getAllUser(@PathVariable String userId){
-        userRepository.delete(userId);
+    public void getAllUser(@PathVariable Long userId){
+        userService.deleteUser(userId);
 
     }
 

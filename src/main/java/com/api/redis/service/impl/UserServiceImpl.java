@@ -4,9 +4,11 @@ import com.api.redis.dao.UserJpaRepository;
 import com.api.redis.entities.UserEntity;
 import com.api.redis.dto.UserDto;
 import com.api.redis.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,25 +21,38 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserEntity getUserById(Long id) {
-        return userJpaRepository.findById(1L).get();
+    public UserDto getUserById(Long id) {
+        UserEntity userEntity= userJpaRepository.findById(1L).get();
+        UserDto userDto=new UserDto();
+        BeanUtils.copyProperties(userEntity,userDto);
+        return userDto;
     }
 
 
     @Override
     public List<UserDto> findAllUser() {
-        return List.of();
+        List<UserEntity> userDtoList= userJpaRepository.findAll();
+        List<UserDto> allUsers= userDtoList.stream().map(req->{
+            UserDto userDto=new UserDto();
+            BeanUtils.copyProperties(req,userDto);
+            return userDto;
+        }).collect(Collectors.toList());
+        return allUsers;
     }
 
 
     @Override
     public UserDto createUser(UserDto user) {
-        return null;
+
+        UserEntity newUser= new UserEntity();
+        BeanUtils.copyProperties(user,newUser);
+        userJpaRepository.save(newUser);
+        return user;
     }
 
 
     @Override
     public void deleteUser(Long id) {
-
+        userJpaRepository.deleteById(id);
     }
 }
