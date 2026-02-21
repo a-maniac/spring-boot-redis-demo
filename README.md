@@ -128,7 +128,7 @@ Use case:
 
 ## 🚀 How To Run Locally
 
-###1️⃣ Install Redis
+### 1️⃣ Install Redis
 
 Mac (Homebrew):
 ```
@@ -149,5 +149,93 @@ Should return:
 ```
 PONG
 ```
+
+### 2️⃣ Clone Repository
+```
+git clone https://github.com/a-maniac/spring-boot-redis-demo.git
+cd spring-boot-redis-demo
+```
+
+### 3️⃣ Build Project
+```
+mvn clean install
+```
+
+### 4️⃣ Run Application
+```
+mvn spring-boot:run
+```
+
+App runs on:
+```
+http://localhost:8080
+```
+
+---
+🔍 Testing Redis Data
+
+Open Redis CLI:
+```
+redis-cli
+```
+Check stored keys:
+```
+KEYS *
+```
+
+Check key type:
+```
+TYPE users
+```
+
+Retrieve data:
+```
+HGETALL users
+```
+---
+
+##🧪 Sample Workflow
+
+1. Send request to create user
+2. User is saved in Redis using Hash
+3. Verify using Redis CLI
+4. Fetch user via API
+
+   ---
+
+##🏗 Why Use Hash Instead of Value?
+| Feature                | opsForValue | opsForHash |
+| ---------------------- | ----------- | ---------- |
+| Single Object          | ✅           | ❌          |
+| Store Multiple Objects | ❌           | ✅          |
+| Grouped Storage        | ❌           | ✅          |
+| Partial Updates        | ❌           | ✅          |
+
+Hash is ideal when storing multiple related objects under one key.
+---
+
+## 🧑‍💻 Learning Outcomes
+
+Through this project, you understand:
+
+- Redis data types
+- Spring Boot Redis integration
+- Serialization concepts
+- Redis CLI debugging
+- Difference between String and Hash operations
+- Real-world caching patterns
+
+---
+
+## 🔥 Production Use Cases of Redis
+
+1. API response caching
+2. JWT token blacklisting
+3. Rate limiting
+4. Session storage
+5. Leaderboards (Sorted Set)
+6. Distributed locking
+
+
 
 
