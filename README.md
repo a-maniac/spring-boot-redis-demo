@@ -84,6 +84,7 @@ Redis stores data in binary format.
 Jackson serializer converts Java objects → JSON before storing.
 
 🧠 Redis Data Structures Used
+
 1️⃣ String (opsForValue)
 
 Stores a complete object as a single value.
