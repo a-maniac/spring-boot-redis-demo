@@ -5,7 +5,7 @@ import lombok.*;
 import java.io.Serializable;
 
 @Data
-public class User  implements Serializable {
+public class UserDto implements Serializable {
 
     private Long id;
     private String name;

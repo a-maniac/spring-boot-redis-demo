@@ -2,7 +2,7 @@ package com.api.redis.service.impl;
 
 import com.api.redis.dao.UserJpaRepository;
 import com.api.redis.entities.UserEntity;
-import com.api.redis.dto.User;
+import com.api.redis.dto.UserDto;
 import com.api.redis.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +25,13 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<User> findAllUser() {
+    public List<UserDto> findAllUser() {
         return List.of();
     }
 
 
     @Override
-    public User createUser(User user) {
+    public UserDto createUser(UserDto user) {
         return null;
     }
 

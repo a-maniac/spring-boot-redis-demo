@@ -1,14 +1,14 @@
 package com.api.redis.service;
 
 import com.api.redis.entities.UserEntity;
-import com.api.redis.dto.User;
+import com.api.redis.dto.UserDto;
 
 import java.util.List;
 
 public interface UserService {
 
     public UserEntity getUserById(Long id);
-    public List<User> findAllUser();
-    public User createUser(User user);
+    public List<UserDto> findAllUser();
+    public UserDto createUser(UserDto user);
     public void deleteUser(Long id);
 }
