@@ -126,7 +126,8 @@ Use case:
 
 ---
 
-##🚀 How To Run Locally
+## 🚀 How To Run Locally
+
 ###1️⃣ Install Redis
 
 Mac (Homebrew):
