@@ -223,7 +223,6 @@ Through this project, you understand:
 - Serialization concepts
 - Redis CLI debugging
 - Difference between String and Hash operations
-- Real-world caching patterns
 
 ---
 
