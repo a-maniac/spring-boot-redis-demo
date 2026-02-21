@@ -1,6 +1,6 @@
 package com.api.redis.dao;
 
-import com.api.redis.models.User;
+import com.api.redis.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;

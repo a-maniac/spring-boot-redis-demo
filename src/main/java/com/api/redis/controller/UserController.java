@@ -1,12 +1,13 @@
 package com.api.redis.controller;
 
 import com.api.redis.dao.UserRepository;
-import com.api.redis.models.User;
+import com.api.redis.entities.UserEntity;
+import com.api.redis.dto.User;
+import com.api.redis.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
@@ -15,17 +16,19 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    UserServiceImpl userService;
+
     @PostMapping("/post")
     public User createUser(@RequestBody User user){
-
-        user.setId(UUID.randomUUID().toString());
         return userRepository.save(user);
 
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable String userId){
-        return userRepository.getUserById(userId);
+    public UserEntity getUserById(@PathVariable Long userId){
+        UserEntity currUser= userService.getUserById(userId);
+        return currUser;
 
     }
 

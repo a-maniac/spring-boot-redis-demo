@@ -1,4 +1,4 @@
-package com.api.redis.models;
+package com.api.redis.dto;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class User  implements Serializable {
 
-    private String id;
+    private Long id;
     private String name;
     private String phone;
     private String email;
