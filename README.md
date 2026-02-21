@@ -1,6 +1,6 @@
 # 🚀 Spring Boot Redis Demo
 
-A production-style Spring Boot application demonstrating how to integrate **Redis** using **Spring Data Redis** and `RedisTemplate`.
+A Spring Boot application demonstrating how to integrate **Redis** using **Spring Data Redis** and `RedisTemplate`.
 
 This project showcases how to store, retrieve, and manage Java objects in Redis using different Redis data structures like **String** and **Hash**.
 
