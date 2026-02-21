@@ -83,7 +83,7 @@ public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connec
 Redis stores data in binary format.
 Jackson serializer converts Java objects → JSON before storing.
 
-🧠 Redis Data Structures Used
+###🧠 Redis Data Structures Used
 
 1️⃣ String (opsForValue)
 
@@ -123,5 +123,30 @@ Use case:
 - Storing multiple users
 - Lookup tables
 - Grouped data storage
+
+---
+
+##🚀 How To Run Locally
+###1️⃣ Install Redis
+
+Mac (Homebrew):
+```
+brew install redis
+```
+
+Start Redis:
+```
+redis-server
+```
+
+Verify:
+```
+redis-cli ping
+```
+
+Should return:
+```
+PONG
+```
 
 
