@@ -83,9 +83,9 @@ public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connec
 Redis stores data in binary format.
 Jackson serializer converts Java objects → JSON before storing.
 
-###🧠 Redis Data Structures Used
+### 🧠 Redis Data Structures Used
 
-1️⃣ String (opsForValue)
+#### 1️⃣ String (opsForValue)
 
 Stores a complete object as a single value.
 
@@ -104,8 +104,8 @@ Use case:
 - Counters
 - Tokens
 
----
-2️⃣ Hash (opsForHash)
+
+#### 2️⃣ Hash (opsForHash)
 
 Stores multiple objects under one Redis key.
 
