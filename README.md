@@ -94,7 +94,9 @@ redisTemplate.opsForValue().set("user:1", user);
 ```
 
 Redis CLI:
+```
 GET user:1
+```
 
 Use case:
 
@@ -112,7 +114,9 @@ redisTemplate.opsForHash().put("users", user.getId(), user);
 ```
 
 Redis CLI:
+```
 HGETALL users
+```
 
 Use case:
 
