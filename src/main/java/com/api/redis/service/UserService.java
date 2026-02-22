@@ -11,4 +11,6 @@ public interface UserService {
     public List<UserDto> findAllUser();
     public UserDto createUser(UserDto user);
     public void deleteUser(Long id);
+
+    public UserDto updateUser(Long userId, UserDto userDto);
 }

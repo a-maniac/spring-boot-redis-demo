@@ -5,9 +5,11 @@ import com.api.redis.entities.UserEntity;
 import com.api.redis.dto.UserDto;
 import com.api.redis.mapper.UserMapper;
 import com.api.redis.service.UserService;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -73,5 +75,36 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
         userJpaRepository.deleteById(id);
         redisTemplate.delete(USER_KEY_PREFIX+id);
+    }
+
+    /**
+     * @param userId
+     * @param userDto
+     * @return
+     */
+    @Override
+    @Transactional
+    public UserDto updateUser(Long userId, UserDto userDto) {
+        log.info("Thread: "+Thread.currentThread().getName());
+
+        try{
+            UserEntity userEntity=userJpaRepository.findById(userId).orElseThrow(()-> new RuntimeException("User entity not found"));
+            userEntity.setName(userDto.getName());
+            userEntity.setEmail(userDto.getEmail());
+            userEntity.setPhone(userDto.getPhone());
+
+            UserEntity updated=userJpaRepository.save(userEntity);
+
+            UserDto response= UserMapper.toDto(updated);
+
+            redisTemplate.opsForValue().set(USER_KEY_PREFIX+userId, response,10, TimeUnit.MINUTES);
+
+            return response;
+        }catch (ObjectOptimisticLockingFailureException e){
+            log.error("Optimistic locking failed for user {}", userId);
+
+            throw new RuntimeException("Concurrent update detected. Please retry.");
+        }
+
     }
 }
