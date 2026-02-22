@@ -5,6 +5,9 @@ import lombok.*;
 import java.io.Serializable;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto implements Serializable {
 
     private Long id;
